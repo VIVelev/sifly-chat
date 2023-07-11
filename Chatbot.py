@@ -9,9 +9,6 @@ from langchain.vectorstores import Chroma
 
 st.title("🏄‍♂️ SiFly Chatbot")
 
-with st.sidebar:
-    openai_api_key = st.text_input("OpenAI API Key", type="password")
-
 
 @st.cache_resource
 def get_loader():
@@ -21,7 +18,7 @@ def get_loader():
 @st.cache_resource
 def get_sifly_db():
     text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
-    embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
+    embeddings = OpenAIEmbeddings()
 
     docs = get_loader().load()
     sifly_texts = text_splitter.split_documents(docs)
@@ -37,7 +34,7 @@ def get_sifly_tool(llm):
 
 
 def generate_response(input_text):
-    llm = OpenAI(temperature=0, openai_api_key=openai_api_key)
+    llm = OpenAI(temperature=0)
 
     tools = [
         Tool(
@@ -57,7 +54,5 @@ def generate_response(input_text):
 with st.form("my_form"):
     text = st.text_area("Enter text:", "How to connect the remote to the board?")
     submitted = st.form_submit_button("Submit")
-    if not openai_api_key:
-        st.info("Please add your OpenAI API key to continue.")
-    elif submitted:
+    if submitted:
         generate_response(text)
