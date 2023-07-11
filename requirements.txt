@@ -6,4 +6,4 @@ pypdf
 tiktoken
 streamlit
 
-pydantic=1.10.8
+pydantic==1.10.8
