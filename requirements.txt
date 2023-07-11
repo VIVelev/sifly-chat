@@ -1,9 +1,10 @@
 openai
 langchain
 hnswlib
-chromadb
-pypdf
 tiktoken
+pypdf
 streamlit
 
+# https://github.com/hwchase17/langchain/issues/7548#issuecomment-1631131379
+chromadb==0.3.26
 pydantic==1.10.8
