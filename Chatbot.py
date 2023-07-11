@@ -12,7 +12,7 @@ st.title("🏄‍♂️ SiFly Chatbot")
 
 @st.cache_resource
 def get_loader():
-    return PyPDFLoader("~/sifly-chat/data/SiFly_User_Guide.pdf")
+    return PyPDFLoader("data/SiFly_User_Guide.pdf")
 
 
 @st.cache_resource
